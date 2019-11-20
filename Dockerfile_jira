@@ -1,0 +1,23 @@
+# Base image Alpine
+FROM python:alpine3.10
+
+COPY . /app
+WORKDIR /app
+
+#RUN pip install -r requirements.txt
+
+#RUN apk add build-base
+
+RUN apk add --no-cache libffi-dev build-base python-dev
+
+RUN pip install cryptography==2.7
+RUN pip install oci
+
+RUN pip install jira
+
+
+CMD python ./index.py
+
+
+
+
